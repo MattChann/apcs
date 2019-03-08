@@ -5,12 +5,13 @@
 public class List_inArraySlots {
     private int[] list;
     private int lastIndex = -1;
+    private static final int INITIAL_CAPACITY = 10;
 
     /**
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
-        list = new int[8];
+        list = new int[INITIAL_CAPACITY];
     }
 
 
@@ -84,7 +85,9 @@ public class List_inArraySlots {
       @precondition: @index is within the bounds of this list.
      */
     public int set(int index, int newValue) {
+        int oldItem = list[index];
         list[index] = newValue;
+        return oldItem;
     }
 
         
@@ -115,6 +118,14 @@ public class List_inArraySlots {
       (that is, increase the index associated with each).
      */
     public void add(int index, int value) {
-        
+        if(list.length == this.size()) {
+            this.expand();
+        }
+        for(int i=this.size();i>index;i--) {
+            list[i] = list[i-1];
+        }
+        list[index] = value;
+
+        lastIndex++;
     }
 }
