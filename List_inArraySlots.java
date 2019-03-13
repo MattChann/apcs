@@ -16,7 +16,9 @@ public class List_inArraySlots {
         Optional extra education in programming (not comp sci):
             replace these "magic numbers" with an "enumerated type".
      */
-    private int[] typeOfElements;
+
+    private enum Types {INT, DOUBLE, STRING};
+    private Types[] typeOfElements;
 
     private static final int INITIAL_CAPACITY = 10;
 
@@ -24,22 +26,42 @@ public class List_inArraySlots {
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
+        intElements = new int[10];
+        doubleElements = new double[10];
+        stringElements = new String[10];
+
+        typeOfElements = new Types[10];
     }
 
 
     /**
       @return the number of elements in this list
      */
-    // public int size() {
-    // }
+    public int size() {
+        return filledElements;
+    }
 
 
     /**
       @return a string representation of this list,
       in [a,b,c,] format
      */
-    // public String toString() {
-    // }
+    public String toString() {
+        String stringRep = "[";
+        for(int i=0; i<filledElements; i++) {
+            if (typeOfElements[i] == Types.INT) {
+                stringRep += intElements[i];
+            }
+            else if (typeOfElements[i] == Types.DOUBLE) {
+                stringRep += doubleElements[i];
+            }
+            else if (typeOfElements[i] == Types.STRING) {
+                stringRep += stringElements[i];
+            }
+            stringRep += ",";
+        }
+        return stringRep + "]";
+    }
 
 
     /**
@@ -47,25 +69,61 @@ public class List_inArraySlots {
 
       @return true, in keeping with conventions yet to be discussed
      */
-     // public boolean add( int type   // same meaning as in typeOfElements
-                       // , int    intValue
-                       // , double doubleValue
-                       // , String stringValue
-                       // ) {
-     // }
+    public boolean add( Types  type   // same meaning as in typeOfElements
+                      , int    intValue
+                      , double doubleValue
+                      , String stringValue
+                      ) {
+        typeOfElements[filledElements-1] = type;
+        if (type == Types.INT) {
+            intElements[filledElements-1] = intValue;
+        }
+        else if (type == Types.DOUBLE) {
+            doubleElements[filledElements-1] = doubleValue;
+        }
+        else if (type == Types.STRING) {
+            stringElements[filledElements-1] = stringValue;
+        }
+
+        filledElements++;
+        return true;
+    }
 
 
     /**
       Double the capacity of the List_inArraySlots,
       preserving existing data.
      */
-     // private void expand() {
-        // System.out.println( "expand... (for debugging)");
-           // /* S.O.P. rules for debugging:
-              // Working methods should be silent. But during
-              // development, the programmer must verify that
-              // this method is called when that is appropriate.
-              // So test using the println(), then comment it out.
-              // */
-     // }
+    private void expand() {
+        int[] oldIntElements = intElements;
+        double[] oldDoubleElements = doubleElements;
+        String[] oldStringElements = stringElements;
+        Types[] oldTypeOfElements = typeOfElements;
+
+        int oldLength = typeOfElements.length;
+        intElements = new int[oldLength*2];
+        doubleElements = new double[oldLength*2];
+        stringElements = new String[oldLength*2];
+        typeOfElements = new Types[oldLength*2];
+
+        for(int i=0; i<oldLength; i++) {
+            intElements[i] = oldIntElements[i];
+            doubleElements[i] = oldDoubleElements[i];
+            stringElements[i] = oldStringElements[i];
+            typeOfElements[i] = oldTypeOfElements[i];
+        }
+    }
+
+    // Unfinished
+    public Types get(int index) {
+        if (typeOfElements[index] == Types.INT) {
+            return intElements[index];
+        }
+        if (typeOfElements[index] == Types.DOUBLE) {
+            return doubleElements[index];
+        }
+        if (typeOfElements[index] == Types.STRING) {
+            return stringElements[index];
+        }
+    }
 }
