@@ -118,18 +118,11 @@ public class List_inArraySlots {
         }
     }
 
-    // Unfinished
-    /*
-    public Types get(int index) {
-        if (typeOfElements[index] == Types.INT) {
-            return intElements[index];
-        }
-        if (typeOfElements[index] == Types.DOUBLE) {
-            return doubleElements[index];
-        }
-        if (typeOfElements[index] == Types.STRING) {
-            return stringElements[index];
-        }
+    public Union get(int index) {
+        return new Union(typeOfElements[index], 
+                         intElements[index], 
+                         doubleElements[index], 
+                         stringElements[index]
+                         );
     }
-    */
 }
