@@ -17,7 +17,7 @@ public class List_inArraySlots {
             replace these "magic numbers" with an "enumerated type".
      */
 
-    private enum Types {INT, DOUBLE, STRING};
+    public enum Types {INT, DOUBLE, STRING};
     private Types[] typeOfElements;
 
     private static final int INITIAL_CAPACITY = 10;
@@ -26,11 +26,11 @@ public class List_inArraySlots {
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
-        intElements = new int[10];
-        doubleElements = new double[10];
-        stringElements = new String[10];
+        intElements = new int[INITIAL_CAPACITY];
+        doubleElements = new double[INITIAL_CAPACITY];
+        stringElements = new String[INITIAL_CAPACITY];
 
-        typeOfElements = new Types[10];
+        typeOfElements = new Types[INITIAL_CAPACITY];
     }
 
 
@@ -74,15 +74,19 @@ public class List_inArraySlots {
                       , double doubleValue
                       , String stringValue
                       ) {
-        typeOfElements[filledElements-1] = type;
+        if (filledElements == typeOfElements.length){
+            expand();
+        }
+
+        typeOfElements[filledElements] = type;
         if (type == Types.INT) {
-            intElements[filledElements-1] = intValue;
+            intElements[filledElements] = intValue;
         }
         else if (type == Types.DOUBLE) {
-            doubleElements[filledElements-1] = doubleValue;
+            doubleElements[filledElements] = doubleValue;
         }
         else if (type == Types.STRING) {
-            stringElements[filledElements-1] = stringValue;
+            stringElements[filledElements] = stringValue;
         }
 
         filledElements++;
@@ -115,6 +119,7 @@ public class List_inArraySlots {
     }
 
     // Unfinished
+    /*
     public Types get(int index) {
         if (typeOfElements[index] == Types.INT) {
             return intElements[index];
@@ -126,4 +131,5 @@ public class List_inArraySlots {
             return stringElements[index];
         }
     }
+    */
 }
