@@ -34,5 +34,13 @@ public class UserOfList {
         System.out.println("result of expanded list: "
              + list.size() + " elements:");
         System.out.println( list + System.lineSeparator());
+
+        getTest(list);
+    }
+
+    public static void getTest(List_inArraySlots list){
+        for(int i=list.size()-1; i>=0; i--) {
+            System.out.println(i + ": " + list.get(i));
+        }
     }
 }

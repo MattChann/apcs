@@ -12,14 +12,16 @@ public class Union {
     }
 
     public String toString(){
-        if (type == Types.INT) {
-            return intVal + "";
+        String stringRep = "";
+        if (type == List_inArraySlots.Types.INT) {
+            stringRep += intVal;
         }
-        if (type == Types.DOUBLE) {
-            return doubleVal + "";
+        if (type == List_inArraySlots.Types.DOUBLE) {
+            stringRep += doubleVal;
         }
-        if (type == Types.STRING) {
-            return stringVal + "";
+        if (type == List_inArraySlots.Types.STRING) {
+            stringRep += stringVal;
         }
+        return stringRep;
     }
 }
