@@ -128,4 +128,14 @@ public class List_inArraySlots {
 
         lastIndex++;
     }
+
+    /**
+      Append @value to the head of this list.
+
+      @return true, in keeping with conventions yet to be discussed
+     */
+    public boolean addAsHead(Object val) {
+        add(size()-1,val);
+        return true;
+    }
 }
