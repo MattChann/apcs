@@ -47,8 +47,7 @@ public class List_inChainOfNodes{
       @return true, in keeping with conventions yet to be discussed
      */
     public boolean addAsHead(Object val) {
-        Node newHead = new Node(val, headReference);
-        headReference = newHead;
+        headReference = new Node(val, headReference);
         return true;
     }
 
@@ -73,8 +72,9 @@ public class List_inChainOfNodes{
     //---------------------------
 
     public Object set(int index, Object newValue) {
-        Object oldVal = getNode(index).getCargoReference();
-        getNode(index).setCargoReference(newValue);
+        Node nodeBeingSet = getNode(index);
+        Object oldVal = nodeBeingSet.getCargoReference();
+        nodeBeingSet.setCargoReference(newValue);
         return oldVal;
     }
 
@@ -85,10 +85,10 @@ public class List_inChainOfNodes{
 
 
     public boolean add(int index, Object val) {
-        Node newNode = new Node(val,getNode(index));
         if (index == 0) {
-            headReference = newNode;
+            addAsHead(val);
         } else {
+            Node newNode = new Node(val,getNode(index));
             getNode(index-1).setReferenceToNextNode(newNode);
         }
 
