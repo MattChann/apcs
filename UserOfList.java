@@ -37,5 +37,22 @@ public class UserOfList {
         System.out.println(list + System.lineSeparator());
         list.add(list.size(),"Tail Node");
         System.out.println(list + System.lineSeparator());
+
+        System.out.println("Testing set():" + System.lineSeparator());
+        list.set(4,"Added Value");
+        System.out.println(list + System.lineSeparator());
+        list.set(0,"Added Value");
+        System.out.println(list + System.lineSeparator());
+        list.set(list.size()-1,"Added Value");
+        System.out.println(list + System.lineSeparator());
+
+
+        System.out.println("Testing remove():" + System.lineSeparator());
+        list.remove(4);
+        System.out.println(list + System.lineSeparator());
+        list.remove(0);
+        System.out.println(list + System.lineSeparator());
+        list.remove(list.size()-1);
+        System.out.println(list + System.lineSeparator());
     }
 }

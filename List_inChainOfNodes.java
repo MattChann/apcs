@@ -34,7 +34,7 @@ public class List_inChainOfNodes{
         String stringRep = size() + " elements [";
         Node currentNode = headReference;
         while (currentNode != null) {
-            stringRep += currentNode + ",";
+            stringRep += currentNode.getCargoReference() + ",";
             currentNode = currentNode.getReferenceToNextNode();
         }
         return stringRep + "]";
