@@ -46,9 +46,64 @@ public class List_inChainOfNodes{
 
       @return true, in keeping with conventions yet to be discussed
      */
-     public boolean addAsHead(Object val) {
+    public boolean addAsHead(Object val) {
         Node newHead = new Node(val, headReference);
         headReference = newHead;
         return true;
-     }
+    }
+
+
+    //-------Helper Method-------
+    private Node getNode(int index) {
+        Node currentNode = headReference;
+        for (int i=0; i<index; i++) {
+            currentNode = currentNode.getReferenceToNextNode();
+            if (currentNode == null) {
+                break;
+            }
+        }
+        return currentNode;
+    }
+
+    public void testGetNode() {
+        for (int i=0; i<size(); i++) {
+            System.out.println(getNode(i));
+        }
+    }
+    //---------------------------
+
+    public Object set(int index, Object newValue) {
+        Object oldVal = getNode(index).getCargoReference();
+        getNode(index).setCargoReference(newValue);
+        return oldVal;
+    }
+
+
+    public Object get(int index) {
+        return getNode(index).getCargoReference();
+    }
+
+
+    public boolean add(int index, Object val) {
+        Node newNode = new Node(val,getNode(index));
+        if (index == 0) {
+            headReference = newNode;
+        } else {
+            getNode(index-1).setReferenceToNextNode(newNode);
+        }
+
+        return true;
+    }
+
+
+    public Object remove(int index) {
+        Object oldVal = getNode(index).getCargoReference();
+        if (index == 0) {
+            headReference = getNode(index + 1);
+        } else {
+            getNode(index-1).setReferenceToNextNode(getNode(index + 1));
+        }
+
+        return oldVal;
+    }
 }

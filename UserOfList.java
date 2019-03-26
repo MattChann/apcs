@@ -25,5 +25,17 @@ public class UserOfList {
         }
         System.out.println( "populated list: " + list
                           + System.lineSeparator());
+
+
+        System.out.println("Testing getNode():" + System.lineSeparator());
+        list.testGetNode();
+
+        System.out.println(System.lineSeparator() + "Testing add():" + System.lineSeparator());
+        list.add(3,"d");
+        System.out.println(list + System.lineSeparator());
+        list.add(0,"Head Node");
+        System.out.println(list + System.lineSeparator());
+        list.add(list.size(),"Tail Node");
+        System.out.println(list + System.lineSeparator());
     }
 }
