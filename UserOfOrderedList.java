@@ -13,7 +13,7 @@ public class UserOfOrderedList {
         System.out.println("toString: " + list);
 
         list.add(-1);
-        list.add(3.5);
+        list.add(3);
         list.add(10);
         System.out.println(System.lineSeparator() + "Testing Ordering of List:");
         System.out.println("Size: " + list.size());
