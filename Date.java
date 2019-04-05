@@ -1,9 +1,13 @@
 /**
   Represent a date
  */
-public class Date{
+public class Date implements Comparable{
     private int y,m,d;
     
+    public int compareTo(Object otherObj) {
+        Date otherDate = (Date)otherObj;
+        return 365*(y-otherDate.y) + 31*(m-otherDate.m) + (d-otherDate.d);
+    }
 
     // -------- previously-written code --------
     // constructor
