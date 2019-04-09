@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
   OrderedList_inArraySlots
 
@@ -9,24 +11,24 @@
 public class OrderedList_inArraySlots
     implements OrderedList {
 
-    private ?? Java-standard ArrayList here ?? list_iAS;
+    private ArrayList<Integer> list;
 
     public OrderedList_inArraySlots() {
-        list_iAS = new List_inArraySlots();
+        list = new ArrayList<Integer>();
     }
 
     /**
       @return the number of elements in this list
      */
     public int size(){
-        return list_iAS.size();
+        return list.size();
     }
 
     /**
-      @return a string representation of this Orderedlist_iAS
+      @return a string representation of this Orderedlist
      */
     public String toString() {
-        return list_iAS.toString();
+        return list.toString();
     }
 
 
@@ -36,11 +38,11 @@ public class OrderedList_inArraySlots
      */
      public boolean add( int value) {
          int dest = 0;
-         for( ; dest < list_iAS.size() && list_iAS.get( dest) < value
+         for( ; dest < list.size() && list.get( dest) < value
             ; dest++) ;
          // System.out.println( "OL adding " + value
          //                   + " at index " + dest);
-         list_iAS.add( dest, value);
+         list.add( dest, value);
          return true;
      }
 
@@ -53,7 +55,7 @@ public class OrderedList_inArraySlots
            whether the condition was violated.)
      */
     public int get( int index ) {
-        return list_iAS.get( index);
+        return list.get( index);
     }
 
 
@@ -66,6 +68,6 @@ public class OrderedList_inArraySlots
       @return the value that was removed from the list
      */
     public int remove( int index) {
-        return list_iAS.remove( index);
+        return list.remove( index);
     }
 }
