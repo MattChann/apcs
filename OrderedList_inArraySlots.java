@@ -15,15 +15,20 @@ public class OrderedList_inArraySlots
     /** 
       construct order from an unordered ArrayList
      */
-    public OrderedList_inArraySlots
-            ( ArrayList<Integer> unordered) {
-        this();  // improve, for optional extra education
+    public OrderedList_inArraySlots( ArrayList<Integer> unordered) {
+        int initialSize = unordered.size();
+        list_iAS = new ArrayList<Integer>(initialSize);
 
-        // test champIndex, for incremental development
-        int nextLargerAt = champIndex( unordered);
-        System.out.println( 
-            "smallest element is at index " + nextLargerAt 
-          + " and has the value " + unordered.get( nextLargerAt));
+        while(list_iAS.size() < initialSize) {
+            // test champIndex, for incremental development
+            int nextLargerAt = champIndex( unordered);
+            System.out.println( 
+                "smallest element is at index " + nextLargerAt 
+              + " and has the value " + unordered.get( nextLargerAt));
+
+            list_iAS.add(unordered.get(nextLargerAt));
+            unordered.set(nextLargerAt,null);
+        }
     }
 
 
@@ -33,9 +38,22 @@ public class OrderedList_inArraySlots
               ignoring null elements, and
               using the classic reigning champ algorithm
      */
-     private int champIndex( ArrayList<Integer> challengers) {
-        return challengers.size() - 1;  // replace this line
-     }
+    private int champIndex( ArrayList<Integer> challengers) {
+        int reigningChamp = 0;
+        Integer reigningElement = challengers.get(0);
+        for(int i=0; i<challengers.size(); i++) {
+            if(reigningElement == null){
+                reigningElement = Integer.MAX_VALUE;
+            }
+
+            Integer currentElement = challengers.get(i);
+            if(currentElement != null && currentElement < reigningElement) {
+                reigningElement = currentElement;
+                reigningChamp = i;
+            }
+        }
+        return reigningChamp;
+    }
 
 
     // ------ code from previous assignments below here ----
