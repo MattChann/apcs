@@ -24,4 +24,3 @@ will grow by __three times. This is because the algorithm will be invoked the sa
 0. If the number of the elements in the input triples,
 the time required for the selection sort
 will grow by __nine times. Since the number of times the reigning champ algorithm is invoked grows by three times and the time it takes to run reach reigning champ algorithm also grows by three times, the time required for the selection sort grows by 3 * 3 times which is nine.__
-[Justify, in about 2 sentences.]
