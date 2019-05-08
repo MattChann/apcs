@@ -16,13 +16,22 @@ public class SelectionSorter extends Sorter {
 
     /**
       sort the user's data, implementing selection sort
+
+      Runs reigningDweeb for positions 0 through n-1 in the list
+      Swaps the lowest element into its correct index each time
      */
     public void mySort() {
-        for(int i=0; i<elements.size(); i++) {
+        for(int i=0; i<elements.size()-1; i++) {
             swap(elements, i, reigningDweeb(elements,i));
         }
     }
 
+    /**
+      Given: list and the amount of elements already sorted
+    
+      Finds the lowest element in the list not including the elements already sorted
+      Returns the index of that element
+    */
     private static int reigningDweeb(ArrayList<String> elements, int numSorted) {
         String lowestElement = elements.get(numSorted);
         int lowestElementIndex = numSorted;
