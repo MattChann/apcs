@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 /**
   Represent a square chess board for a queens puzzle
   of a particular size.
@@ -20,7 +22,9 @@ public class BoardForQueensPuzzle {
     /**
       Construct an empty instance of the specified size
      */
-    public BoardForQueensPuzzle( int ranks) {
+    public BoardForQueensPuzzle(int ranks) {
+        lastRankFilled = -1;
+        filesWithQueens = new int[ranks];
     }
 
 
@@ -28,7 +32,7 @@ public class BoardForQueensPuzzle {
       @return the size of the board
      */
     public int ranks() {
-        return -16;   // invalid value
+        return filesWithQueens.length;
     }
 
 
@@ -40,7 +44,16 @@ public class BoardForQueensPuzzle {
                      no queen attacked another.
      */
     public boolean lastIsNg() {
-        return true;
+        for(int rank=0; rank<lastRankFilled; rank++) {
+            int file = filesWithQueens[rank];
+            if(file == filesWithQueens[lastRankFilled]) {  // checks for queens in same file
+                return true;
+            }
+            if(Math.abs(rank - lastRankFilled) == Math.abs(file - filesWithQueens[lastRankFilled])) {  //checks for diagonal queens
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -56,14 +69,17 @@ public class BoardForQueensPuzzle {
         This method checks the last-filled rank.
      */
     public boolean accept() {
-        return false;
+        if(lastRankFilled != ranks()-1) return false;
+        return (!lastIsNg());
     }
 
 
     /**
       Populate the next rank with a queen in position @file
      */
-    public void populate( int file) {
+    public void populate(int file) {
+        lastRankFilled++;
+        filesWithQueens[lastRankFilled] = file;
     }
 
 
@@ -73,6 +89,7 @@ public class BoardForQueensPuzzle {
       @precondition: Some rank(s) have been populated.
      */
     public void depopulate() {
+        lastRankFilled--;
     }
 
 
