@@ -58,8 +58,7 @@ public class SolverForQueensPuzzle {
      */
     private void recordSolutionsStarted() {
         if(inProgress.lastIsNg()); // a null recording
-        else if(inProgress.isAllRanksFilled()) {
-            if(inProgress.accept()) solutions.add(new BoardForQueensPuzzle(inProgress));
+        else if(inProgress.accept()) solutions.add(new BoardForQueensPuzzle(inProgress));
             /*
             System.out.println( "  for debugging: base case detected for..."
                               + System.lineSeparator()

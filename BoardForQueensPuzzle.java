@@ -33,10 +33,6 @@ public class BoardForQueensPuzzle {
         filesWithQueens = copy;
     }
 
-    public boolean isAllRanksFilled() {
-        return (lastRankFilled == (ranks()-1));
-    }
-
 
 
     // ----- skeletal code below here needs no modification -----
