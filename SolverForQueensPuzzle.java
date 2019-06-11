@@ -65,7 +65,6 @@ public class SolverForQueensPuzzle {
                               + inProgress
                               );
             */
-        }
         else{
             for(int iFile=0; iFile<inProgress.ranks(); iFile++) {
                 inProgress.populate(iFile);
