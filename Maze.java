@@ -17,15 +17,16 @@ public class Maze {
         int numColumns = mazeStrArr[0].length();
 
         maze = new int[numRows+2][numColumns+2]; // +2 is to add a border of walls around the entire maze
+        System.out.println((maze[0].length) + "," + (maze.length));
 
         // establishing the border of walls
         for(int column=0; column<maze[0].length; column++) {
             maze[0][column] = 1;
-            maze[maze[0].length-1][column] = 1;
+            maze[maze.length-1][column] = 1;
         }
         for(int row=0; row<maze.length; row++) {
             maze[row][0] = 1;
-            maze[row][maze.length-1] = 1;
+            maze[row][maze[0].length-1] = 1;
         }
 
 

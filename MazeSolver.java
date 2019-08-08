@@ -25,7 +25,7 @@ public class MazeSolver {
     public static void solveMaze() {
         if(maze.accept()) solvedMaze = new Maze(maze);
         else if(maze.lastIsNoGood());
-        else {
+        else if(solvedMaze == null) {  // stops processing other branches when a solution is found
             for(int[] tile:maze.neighbors(maze.getLastAdded())) {
                 maze.populate(tile);
                 solveMaze();
